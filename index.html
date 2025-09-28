@@ -1,10 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home System</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-$END$
+<div class="container">
+    <div class="header">
+        <h1>SMART HOME SYSTEM</h1>
+    </div>
+
+
+    <div class="main-grid">
+        <div class="panel">
+            <h2>Devsice Control</h2>
+            <div class="device-controls">
+                <div class="device-status">
+                    <span class="status-indicator" id="lightStatus"></span>
+                    <span>Living Room Light</span>
+                </div>
+                <div class="control-group">
+                    <button onclick="executeCommand('lightOn')">Light On</button>
+                    <button onclick="executeCommand('lightOff')">Light Off</button>
+                </div>
+
+                <div class="device-status">
+                    <span class="status-indicator off" id="doorStatus"></span>
+                    <span>Front Door</span>
+                </div>
+                <div class="control-group">
+                    <button onclick="executeCommand('doorLock')">Lock Door</button>
+                    <button onclick="executeCommand('doorUnlock')">Unlock Door</button>
+                </div>
+
+                <div class="control-group">
+                    <select id="heatingMode">
+                        <option value="eco">Eco Mode</option>
+                        <option value="comfort">Comfort Mode</option>
+                    </select>
+                    <button onclick="changeHeatingMode()">Change Mode</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Smart Home Facade</h2>
+            <div class="device-controls">
+                <button onclick="leaveHome()">Leave Home</button>
+                <button onclick="arriveHome()">Arrive Home</button>
+                <div class="status-display" id="facadeStatus">
+                    <p style="color: #718096; text-align: center;">Ready for commands</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Temperature System</h2>
+            <div class="temperature-display" id="temperatureDisplay">22°C</div>
+            <div class="device-controls">
+                <div class="control-group">
+                    <button onclick="changeTemperature(18)">Set 18°C</button>
+                    <button onclick="changeTemperature(25)">Set 25°C</button>
+                </div>
+                <div class="status-display" id="temperatureStatus">
+                    <p style="color: #718096; text-align: center;">System monitoring</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>System Logs</h2>
+            <div class="status-display" id="systemLogs">
+                <p style="color: #718096; text-align: center;">System initialized</p>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>User Management</h2>
+            <div class="device-controls">
+                <div class="control-group">
+                    <input type="text" id="userName" placeholder="Enter username">
+                    <button onclick="addUser()">Add User</button>
+                </div>
+                <div class="status-display" id="usersList">
+                    <p style="color: #718096; text-align: center;">No users added</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Legacy Devices</h2>
+            <div class="device-controls">
+                <button onclick="controlLegacyDevice('on')">Old TV On</button>
+                <button onclick="controlLegacyDevice('off')">Old TV Off</button>
+                <div class="status-display" id="legacyStatus">
+                    <p style="color: #718096; text-align: center;">Legacy devices ready</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel chat-area">
+            <h2>House Communication</h2>
+            <div class="chat-messages" id="chatMessages">
+                <p style="color: #718096; text-align: center;">Chat room initialized</p>
+            </div>
+            <div class="chat-input">
+                <select id="messageReceiver">
+                    <option value="all">All Users</option>
+                </select>
+                <input type="text" id="messageInput" placeholder="Type message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="scenario-controls">
+        <button class="scenario-btn" onclick="runDaySimulation()">Run Day Simulation</button>
+        <button class="scenario-btn" onclick="clearLogs()">Clear All Logs</button>
+    </div>
+</div>
+
+<script src="js/singleton.js"></script>
+<script src="js/command.js"></script>
+<script src="js/facade.js"></script>
+<script src="js/mediator.js"></script>
+<script src="js/strategy.js"></script>
+<script src="js/observer.js"></script>
+<script src="js/adapter.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
